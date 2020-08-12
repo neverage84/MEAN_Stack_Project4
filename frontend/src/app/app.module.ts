@@ -11,7 +11,15 @@ import { CallComponent } from './call/call.component';
 import { NetworkComponent } from './network/network.component';
 import { SystemTimeComponent } from './system-time/system-time.component';
 import { ContactInfoComponent } from './contact-info/contact-info.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DisplayComponent } from './display/display.component';
+import { Routes, RouterModule } from '@angular/router';
 
+const routes: Routes = [
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'display', component: DisplayComponent},
+  {path: ' ', redirectTo:  'dashboard', pathMatch: 'full'}
+];
 
 @NgModule({
   declarations: [
@@ -21,13 +29,16 @@ import { ContactInfoComponent } from './contact-info/contact-info.component';
     CallComponent,
     NetworkComponent,
     SystemTimeComponent,
-    ContactInfoComponent
+    ContactInfoComponent,
+    DashboardComponent,
+    DisplayComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     // Add line below:
     BrowserAnimationsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
