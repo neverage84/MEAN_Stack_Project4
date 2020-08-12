@@ -14,6 +14,7 @@ import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DisplayComponent } from './display/display.component';
 import { Routes, RouterModule } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
@@ -31,7 +32,8 @@ const routes: Routes = [
     SystemTimeComponent,
     ContactInfoComponent,
     DashboardComponent,
-    DisplayComponent
+    DisplayComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
