@@ -1,17 +1,21 @@
 //requiring dependencies
 const express = require("express"),
+        cors = require('cors'),
+            bodyParser = require('body-parser'),
                 fs = require('fs'),
                     xml2js = require('xml2js');
 
-//setting up port and running express
+//setting up port and running express, cors, and body-parser
 const PORT = 4000;
 const app = express();
+const router = express.Router();
 
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
+app.use(cors());
+app.use(bodyParser.json());
+app.use('/', router);
 
-//Listening on above report
+
+//listening on above report
 app.listen(PORT, () => {
  console.log(`Server is listening on port: ${PORT}`);
 });
@@ -20,7 +24,7 @@ app.listen(PORT, () => {
 var xml;
 var parser = new xml2js.Parser();
 
-//Function to request Status.xml
+//function to request Status.xml
 function StatusXMLRequest(){
 
 //read the status.xml file then perform a function
@@ -34,8 +38,8 @@ function StatusXMLRequest(){
 });
 }
 
-//When server loads, run the StatusXMLfunction
+//when server loads, run the StatusXMLfunction
 StatusXMLRequest();
 
-//Run the Request function every 60 seconds
+//run the Request Function every 60 seconds
 setInterval(StatusXMLRequest, 60*1000);
